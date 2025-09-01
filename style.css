@@ -1,0 +1,219 @@
+/* style.css */
+/* Rooftop Garden Planner — Responsive layout using CSS Grid and Flexbox
+   - Grid used for: overall layout (.layout) and card grid (.card-grid)
+   - Flexbox used for: header, nav, and small component alignment
+*/
+
+/* ========== Variables & Base ========== */
+:root{
+  --bg: #fff7fb;
+  --card: #ffffff;
+  --muted: #66646a;
+  --accent: #ff6fa3; /* pink accent */
+  --accent-2: #ffb3d1;
+  --shadow: 0 6px 18px rgba(18,15,20,0.06);
+  --radius: 12px;
+  --max-width: 1200px;
+  --gap: 1.25rem;
+  --container-padding: 1rem;
+  --card-transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s;
+  font-size: 16px;
+}
+
+* {box-sizing: border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #fff7fb 0%, #fff 60%);
+  color: #2b2b2b;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  padding:0 0 4rem;
+}
+
+/* ========== Layout wrappers ========== */
+.site-header{
+  max-width:var(--max-width);
+  margin: 1rem auto;
+  padding: .8rem;
+  display:flex;               /* Flexbox: header layout */
+  gap: 1rem;
+  align-items:center;
+  justify-content:space-between;
+  padding-left:var(--container-padding);
+  padding-right:var(--container-padding);
+}
+
+.brand{ display:flex; gap:.8rem; align-items:center }
+.brand h1{ font-size:1.05rem; margin:0; letter-spacing:-0.4px }
+.brand .tagline{ margin:0; font-size:.85rem; color:var(--muted) }
+
+.header-actions{ display:flex; gap:.6rem; align-items:center }
+
+.main-nav{
+  max-width:var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+.main-nav ul{
+  list-style:none; margin:0; padding:0;
+  display:flex; gap: .8rem; align-items:center; overflow:auto;
+}
+.main-nav a{
+  display:inline-block;
+  padding:.55rem .8rem;
+  text-decoration:none;
+  color:var(--muted);
+  border-radius:10px;
+  transition: background-color .18s, color .18s;
+}
+.main-nav a:hover, .main-nav a:focus{
+  background: linear-gradient(90deg, rgba(255,111,155,0.12), rgba(255,179,209,0.08));
+  color:var(--accent);
+  outline: none;
+}
+
+/* Grid layout: main content + sidebar */
+.layout{
+  max-width:var(--max-width);
+  margin: 1rem auto;
+  padding: 0 var(--container-padding);
+  display:grid;                         /* CSS Grid: page layout */
+  grid-template-columns: 1fr 320px;
+  grid-template-areas: "main sidebar";
+  gap: var(--gap);
+  align-items:start;
+}
+
+/* Main content */
+.content{
+  grid-area: main;
+}
+
+/* Hero */
+.hero{
+  background: linear-gradient(180deg, rgba(255,111,155,0.06), rgba(255,179,209,0.02));
+  padding:1.1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+.hero h2{ margin:.2rem 0 .4rem 0; font-size:1.25rem }
+.hero p{ margin:0 0 .8rem 0; color:var(--muted) }
+
+/* Flexbox for controls inside hero */
+.hero-controls{ display:flex; gap:.8rem; flex-wrap:wrap; align-items:center; }
+.control{ display:flex; gap:.5rem; align-items:center; background:#fff; padding:.45rem .6rem; border-radius:10px; box-shadow: 0 4px 12px rgba(0,0,0,0.03) }
+.control span{ font-size:.8rem; color:var(--muted) }
+.control select, .control input{ border: none; background: transparent; font-size: .95rem }
+
+/* Planner card grid (CSS Grid) */
+.planner-cards h3{ margin: 0 0 .8rem 0 }
+.card-grid{
+  display:grid;                       /* CSS Grid: adaptive card grid */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: .9rem;
+  margin-bottom: 1rem;
+}
+.card{
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--card-transition);
+  display:flex; flex-direction:column;
+}
+.card img{ width:100%; height: 140px; object-fit:cover; display:block; }
+.card-body{ padding: .75rem; flex:1; display:flex; flex-direction:column; gap:.45rem }
+.card h4{ margin:0; font-size:1rem }
+.card p{ margin:0; color:var(--muted); font-size:.92rem }
+.card-tags{ margin-top:auto; display:flex; gap:.4rem; flex-wrap:wrap }
+.card-tags span{
+  font-size:.72rem;
+  color:var(--accent);
+  background: linear-gradient(90deg, rgba(255,111,155,0.08), rgba(255,179,209,0.03));
+  padding:.25rem .45rem;
+  border-radius: 999px;
+}
+
+/* Card hover micro-interaction */
+.card:hover{ transform: translateY(-6px); box-shadow: 0 18px 36px rgba(18,15,20,0.08) }
+
+/* Sidebar */
+.sidebar{
+  grid-area: sidebar;
+  position:relative;
+  top:0;
+}
+
+/* Plant library uses Flex rows */
+.plant-library{ background:var(--card); padding: .8rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom:1rem }
+.plant-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.6rem }
+.plant{ display:flex; gap:.6rem; align-items:center }
+.plant img{ width:64px; height:64px; object-fit:cover; border-radius:8px; flex-shrink:0 }
+
+/* Tools */
+.tools{ background:var(--card); padding:.7rem; border-radius: var(--radius); box-shadow: var(--shadow) }
+.tool-buttons{ display:flex; gap:.5rem; flex-wrap:wrap }
+.btn{
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  padding: .48rem .7rem;
+  border-radius: 10px;
+  cursor:pointer;
+  font-weight:600;
+  transition: transform .12s, box-shadow .12s;
+}
+.btn.ghost{ background: transparent; color:var(--accent); border: 1px solid rgba(255,111,155,0.16) }
+.btn.small{ padding: .35rem .55rem; font-size:.88rem }
+.btn:active{ transform: translateY(1px) }
+.btn:focus{ outline: 3px solid rgba(255,111,155,0.14); outline-offset:2px }
+
+/* Footer */
+.site-footer{
+  max-width:var(--max-width);
+  margin: 2rem auto 0;
+  padding: 0 var(--container-padding);
+  color:var(--muted);
+  text-align:center;
+}
+
+/* ========== Responsive Breakpoints ========== */
+/* Desktop -> Tablet */
+@media (max-width: 1024px){
+  .layout{ grid-template-columns: 1fr 280px }
+  .card img{ height: 130px }
+}
+
+/* Tablet -> Mobile: move to single column */
+/* Also demonstrate hiding/stacking and adjusting spacing */
+@media (max-width: 700px){
+  .site-header{ padding-left:.8rem; padding-right:.8rem; gap:.6rem }
+  .main-nav ul{ gap:.6rem; overflow-x:auto }
+  .layout{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "main"
+      "sidebar";
+  }
+  .sidebar{ order: 2; }
+  .card img{ height: 140px }
+}
+
+/* Small phone */
+@media (max-width: 420px){
+  :root{ font-size:15px } /* scale typography slightly */
+
+  .hero-controls{ flex-direction:column; align-items:stretch }
+  .brand h1{ font-size: .98rem }
+  .brand .tagline{ font-size:.8rem }
+  .card img{ height:120px }
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .card, .btn{ transition: none !important; animation: none !important }
+}

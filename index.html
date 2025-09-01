@@ -1,0 +1,159 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rooftop Garden Planner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a href="#" class="logo" aria-label="Rooftop Garden Planner home">
+        <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true">
+          <rect rx="6" width="24" height="24" fill="none"></rect>
+          <path d="M12 2 L16 8 H8 Z M4 22h16v-2H4z" fill="currentColor"/>
+        </svg>
+      </a>
+      <div>
+        <h1>Rooftop Garden Planner</h1>
+        <p class="tagline">Design a small-space garden that grows big.</p>
+      </div>
+    </div>
+
+    <!-- Flexbox: header actions use Flex for alignment -->
+    <div class="header-actions">
+      <button class="btn primary">Start a Plan</button>
+      <button class="btn ghost">Export</button>
+    </div>
+  </header>
+
+  <!-- Flexbox: primary navigation uses Flexbox to lay out links -->
+  <nav class="main-nav" role="navigation" aria-label="Primary navigation">
+    <ul>
+      <li><a href="#planner">Planner</a></li>
+      <li><a href="#library">Plant library</a></li>
+      <li><a href="#tips">Care tips</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- CSS Grid: the main page layout uses Grid (content + sidebar) -->
+  <div class="layout">
+    <main id="planner" class="content">
+      <section class="hero">
+        <h2>Visualize your rooftop</h2>
+        <p>Choose containers, plants, and layout. The planner adapts for tiny balconies through to full roofs.</p>
+        <div class="hero-controls">
+          <label class="control">
+            <span>Exposure</span>
+            <select>
+              <option>Full sun</option>
+              <option>Partial sun</option>
+              <option>Shade</option>
+            </select>
+          </label>
+          <label class="control">
+            <span>Area</span>
+            <input type="range" min="1" max="100" value="40" />
+          </label>
+        </div>
+      </section>
+
+      <section class="planner-cards" aria-label="Planner example layouts">
+        <h3>Quick layout ideas</h3>
+
+        <!-- Grid: card grid uses CSS Grid (auto-fit) -->
+        <div class="card-grid">
+          <article class="card">
+            <img src="https://via.placeholder.com/600x360?text=Herb+Corner" alt="Herb Corner layout"/>
+            <div class="card-body">
+              <h4>Herb Corner</h4>
+              <p>Compact pots for basil, mint, and parsley — perfect for cooking.</p>
+              <div class="card-tags">
+                <span>Basil</span><span>Mint</span><span>Parsley</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://via.placeholder.com/600x360?text=Veg+Beds" alt="Vegetable beds layout"/>
+            <div class="card-body">
+              <h4>Vegetable Beds</h4>
+              <p>Raised beds with trellises for tomatoes and beans.</p>
+              <div class="card-tags">
+                <span>Tomato</span><span>Beans</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://via.placeholder.com/600x360?text=Pollinator+Patch" alt="Pollinator patch layout"/>
+            <div class="card-body">
+              <h4>Pollinator Patch</h4>
+              <p>Flowers and native plants to draw bees and butterflies.</p>
+              <div class="card-tags">
+                <span>Sunflower</span><span>Lavender</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="tips" class="tips">
+        <h3>Care Tips</h3>
+        <ul>
+          <li>Water early morning, deep and infrequent.</li>
+          <li>Use high-quality potting mix and compost.</li>
+          <li>Group plants by sun and water needs.</li>
+        </ul>
+      </section>
+    </main>
+
+    <aside class="sidebar" aria-label="Sidebar">
+      <section id="library" class="plant-library">
+        <h3>Plant Library</h3>
+
+        <!-- Flexbox: plant list uses Flex for rows -->
+        <ul class="plant-list">
+          <li class="plant">
+            <img src="https://via.placeholder.com/80?text=Basil" alt="Basil"/>
+            <div>
+              <strong>Basil</strong>
+              <p>Quick grower — harvest leaves regularly.</p>
+            </div>
+          </li>
+          <li class="plant">
+            <img src="https://via.placeholder.com/80?text=Tomato" alt="Tomato"/>
+            <div>
+              <strong>Tomato</strong>
+              <p>Needs full sun and support for vines.</p>
+            </div>
+          </li>
+          <li class="plant">
+            <img src="https://via.placeholder.com/80?text=Lavender" alt="Lavender"/>
+            <div>
+              <strong>Lavender</strong>
+              <p>Drought-tolerant, loves sun.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="tools">
+        <h4>Quick tools</h4>
+        <div class="tool-buttons">
+          <button class="btn small">Add pot</button>
+          <button class="btn small">Add trellis</button>
+          <button class="btn small ghost">Reset</button>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <small>&copy; 2025 Rooftop Garden Planner • Built with responsive Grid & Flexbox</small>
+  </footer>
+</body>
+</html>
